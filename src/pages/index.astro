@@ -1,11 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import NavBar from "../components/NavBar.astro"
+import Sticker from "../components/Sticker.astro"
+import stickers from "../data/stickers.json"
+
 ---
 
+<style>
+	.stickers-collection {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		
+	}
+</style>
 <BaseLayout title="Página principal" description="Esta es mi página principal donde muestro todo lo relevante al sitio web">
 	<h1>Astro - Página Principal</h1>
 
+	<div class="stickers-collection">
+		{stickers.map(sticker => <Sticker data={sticker}></Sticker>)}
+	</div>
+	
 	<NavBar></NavBar>
 	
 </BaseLayout>
