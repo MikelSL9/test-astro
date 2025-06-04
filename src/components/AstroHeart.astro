@@ -1,0 +1,26 @@
+---
+const { heart } = Astro.props;
+---
+
+<astro-heart>
+  <button aria-label="Heart">{heart}</button> × <span>0</span>
+</astro-heart>
+
+<script>
+  class AstroHeart extends HTMLElement {
+    connectedCallback() {
+      let count = 0;
+
+        const heartButton = this.querySelector("button");
+        const countSpan = this.querySelector("span");
+
+        heartButton.addEventListener("click", () => {
+            count++;
+            countSpan.textContent = count;
+        });
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define("astro-heart", AstroHeart);
+</script>
